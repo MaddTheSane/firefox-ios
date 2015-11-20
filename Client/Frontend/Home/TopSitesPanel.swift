@@ -34,8 +34,6 @@ class TopSitesPanel: UIViewController {
         )
     }()
 
-    private var deletingTile: Bool = false
-
     var editingThumbnails: Bool = false {
         didSet {
             if editingThumbnails != oldValue {
@@ -138,18 +136,16 @@ class TopSitesPanel: UIViewController {
     }
 
     private func deleteHistoryTileForSite(site: Site, atIndexPath indexPath: NSIndexPath) {
-        func reloadThumbnails() -> Success {
-            return self.profile.history.getTopSitesWithLimit(self.layout.thumbnailCount)
-                .bindQueue(dispatch_get_main_queue()) { result in
+        func reloadThumbnails() {
+            self.profile.history.getTopSitesWithLimit(self.layout.thumbnailCount)
+                .uponQueue(dispatch_get_main_queue()) { result in
                     self.deleteOrUpdateSites(result, indexPath: indexPath)
-                    return succeed()
             }
         }
 
         profile.history.removeSiteFromTopSites(site)
         >>> self.profile.history.refreshTopSitesCache
         >>> reloadThumbnails
-        >>> { self.deletingTile = false }
     }
 
     private func refreshTopSites(frecencyLimit: Int) {
@@ -279,15 +275,12 @@ extension TopSitesPanel: UICollectionViewDelegate {
 
 extension TopSitesPanel: ThumbnailCellDelegate {
     func didRemoveThumbnail(thumbnailCell: ThumbnailCell) {
-        // Only allow deletion of one tile at a time
-        guard !deletingTile else { return }
-
         if let indexPath = collection?.indexPathForCell(thumbnailCell) {
             if let site = dataSource[indexPath.item] {
-                deletingTile = true
                 self.deleteHistoryTileForSite(site, atIndexPath: indexPath)
             }
         }
+        
     }
 
     func didLongPressThumbnail(thumbnailCell: ThumbnailCell) {

@@ -453,7 +453,7 @@ extension TabManager {
 
     func preserveTabs() {
         // This is wrapped in an Objective-C @try/@catch handler because NSKeyedArchiver may throw exceptions which Swift cannot handle
-        _ = Try(withTry: { () -> Void in
+		unsafeExceptionTryCatch( { () -> Void in
             self.preserveTabsInternal()
             }) { (exception) -> Void in
             print("Failed to preserve tabs: \(exception)")
@@ -534,13 +534,13 @@ extension TabManager {
     func restoreTabs() {
         isRestoring = true
 
-        if count == 0 && !AppConstants.IsRunningTest {
+        if count == 0 && !AppConstants.IsRunningTest && !DebugSettingsBundleOptions.skipSessionRestore {
             // This is wrapped in an Objective-C @try/@catch handler because NSKeyedUnarchiver may throw exceptions which Swift cannot handle
-            let _ = Try(
-                `withTry`: { () -> Void in
+            unsafeExceptionTryCatch(
+                 { () -> Void in
                     self.restoreTabsInternal()
                 },
-                `catch`: { exception in
+                { exception in
                     print("Failed to restore tabs: \(exception)")
                 }
             )

@@ -184,6 +184,9 @@ public class BrowserDB {
             }
             assert(success)
 
+            // Make sure that we don't still have open the files that we just moved!
+            db.close()
+
             if let _ = db.transaction({ connection -> Bool in
                 for table in tables {
                     doCreate(table, connection)

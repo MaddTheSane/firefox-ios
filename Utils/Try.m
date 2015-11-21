@@ -4,18 +4,12 @@
 
 #import "Try.h"
 
-@implementation Try
-
-- (id) initWithTry: (void(^)()) tryBlock catch: (void(^)(NSException *exception)) catchBlock {
-    if (self = [super init]) {
-        @try {
-            tryBlock();
-        }
-        @catch (NSException *exception) {
-            catchBlock(exception);
-        }
+void unsafeExceptionTryCatch(void(^tryBlock)(), void(^catchblock)(NSException *exception))
+{
+    @try {
+        tryBlock();
     }
-    return self;
+    @catch (NSException *exception) {
+        catchblock(exception);
+    }
 }
-
-@end

@@ -1605,7 +1605,7 @@
 		D34DC84D1A16C40C00D49B7B /* Profile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = Profile.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		D34E33021BA793C2006135F0 /* loginForm.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = loginForm.html; sourceTree = "<group>"; };
 		D35275151AA8D13B00E9C906 /* UIColorExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColorExtensions.swift; sourceTree = "<group>"; };
-		D36998881AD70A0A00650C6C /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS.sdk/System/Library/Frameworks/IOKit.framework; sourceTree = DEVELOPER_DIR; };
+		D36998881AD70A0A00650C6C /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = System/Library/Frameworks/IOKit.framework; sourceTree = SDKROOT; };
 		D375A91F1AE71675001B30D5 /* ViewMemoryLeakTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewMemoryLeakTests.swift; sourceTree = "<group>"; };
 		D38A1BEC1A9FA2CA00F6A386 /* SiteTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SiteTableViewController.swift; sourceTree = "<group>"; };
 		D38A1BED1A9FA2CA00F6A386 /* SiteTableViewControllerHeader.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SiteTableViewControllerHeader.xib; sourceTree = "<group>"; };
@@ -2532,6 +2532,21 @@
 			name = OnePasswordExtension;
 			sourceTree = "<group>";
 		};
+		55720A071BF5293900660446 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				E6231C041B90A472005ABB0D /* libxml2.2.tbd */,
+				E6231C021B90A466005ABB0D /* libstdc++.6.0.9.tbd */,
+				E6231C001B90A44F005ABB0D /* libz.tbd */,
+				D39FA16B1A83E17800EE869C /* CoreGraphics.framework */,
+				0B8E0FF31A932BD500161DC3 /* ImageIO.framework */,
+				D36998881AD70A0A00650C6C /* IOKit.framework */,
+				E4B334891BBF23F9004E2BFF /* AdSupport.framework */,
+				E4B334871BBF23F3004E2BFF /* iAd.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		D31FC22A1A8D908800BAF7EC /* Products */ = {
 			isa = PBXGroup;
 			children = (
@@ -2965,17 +2980,14 @@
 			name = Configuration;
 			sourceTree = "<group>";
 		};
-		E6231BFF1B90A34F005ABB0D /* System Dependencies */ = {
+		E652F6F91BF66A79007FFDD6 /* Delegates */ = {
 			isa = PBXGroup;
 			children = (
-				E6231C041B90A472005ABB0D /* libxml2.2.tbd */,
-				E6231C021B90A466005ABB0D /* libstdc++.6.0.9.tbd */,
-				E6231C001B90A44F005ABB0D /* libz.tbd */,
-				D39FA16B1A83E17800EE869C /* CoreGraphics.framework */,
-				0B8E0FF31A932BD500161DC3 /* ImageIO.framework */,
-				D36998881AD70A0A00650C6C /* IOKit.framework */,
+				F84B21E51A0910F600AAB793 /* AppDelegate.swift */,
+				D3BE7B451B054F8600641031 /* TestAppDelegate.swift */,
+				D3BE7B471B05596800641031 /* AuroraAppDelegate.swift */,
 			);
-			name = "System Dependencies";
+			name = Delegates;
 			sourceTree = "<group>";
 		};
 		E65C5B8B1BEA4E7100D28BEF /* FBSnapshotTestCase */ = {
@@ -3016,17 +3028,6 @@
 				E65C5BE31BEA525800D28BEF /* NativeRefTests-Bridging-Header.h */,
 			);
 			path = Other;
-			name = Other;
-			sourceTree = "<group>";
-        };
-		E652F6F91BF66A79007FFDD6 /* Delegates */ = {
-			isa = PBXGroup;
-			children = (
-				F84B21E51A0910F600AAB793 /* AppDelegate.swift */,
-				D3BE7B451B054F8600641031 /* TestAppDelegate.swift */,
-				D3BE7B471B05596800641031 /* AuroraAppDelegate.swift */,
-			);
-			name = Delegates;
 			sourceTree = "<group>";
 		};
 		E66C5B451BDA81050051AA93 /* Apple */ = {
@@ -3077,8 +3078,6 @@
 		F84B21B51A090F8100AAB793 = {
 			isa = PBXGroup;
 			children = (
-				E4B334891BBF23F9004E2BFF /* AdSupport.framework */,
-				E4B334871BBF23F3004E2BFF /* iAd.framework */,
 				D31FC2291A8D908800BAF7EC /* Alamofire.xcodeproj */,
 				2F44F9ED1A9D417500FD20CC /* Base32.xcodeproj */,
 				E69E4E241B9F709A00646EDB /* Breakpad.xcodeproj */,
@@ -3095,6 +3094,7 @@
 				F84B21C01A090F8100AAB793 /* Client */,
 				F84B21D61A090F8100AAB793 /* ClientTests */,
 				F8708D1E1A0970990051AB07 /* Extensions */,
+				55720A071BF5293900660446 /* Frameworks */,
 				28CE83B71A1D1D3200576538 /* FxAClient */,
 				E65C5BC51BEA4F6500D28BEF /* NativeRefTests */,
 				F84B21BF1A090F8100AAB793 /* Products */,
@@ -3107,12 +3107,12 @@
 				2FCAE22A1ABB51F800877008 /* StorageTests */,
 				28CE83B91A1D1D3200576538 /* Sync */,
 				28C077911A3B05C200834FE5 /* SyncTests */,
-				E6231BFF1B90A34F005ABB0D /* System Dependencies */,
 				28CE83EF1A1D246900576538 /* Third-Party Source */,
 				D39FA1601A83E0EC00EE869C /* UITests */,
 				E42CCDFF1A24C4E300B794D3 /* Utils */,
 			);
 			sourceTree = "<group>";
+			usesTabs = 0;
 		};
 		F84B21BF1A090F8100AAB793 /* Products */ = {
 			isa = PBXGroup;

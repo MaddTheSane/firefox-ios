@@ -4,6 +4,4 @@
 
 #import <Foundation/Foundation.h>
 
-@interface Try : NSObject
-- (id) initWithTry: (void(^)()) tryBlock catch: (void(^)(NSException *exception)) catchBlock;
-@end
+void unsafeExceptionTryCatch(void(^tryBlock)(), void(^catchblock)(NSException *exception));

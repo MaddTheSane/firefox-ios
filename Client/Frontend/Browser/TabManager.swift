@@ -479,7 +479,7 @@ extension TabManager {
         }
 
         var tabToSelect: Browser?
-        for (_, savedTab) in savedTabs.enumerate() {
+        for savedTab in savedTabs {
             let tab: Browser
             if #available(iOS 9, *) {
                 tab = self.addTab(flushToDisk: false, zombie: true, isPrivate: savedTab.isPrivate)
